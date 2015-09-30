@@ -28,24 +28,35 @@ angular.module('starter.controllers', [])
 })
 
 .controller('aptCtrl', function($scope) {
-  $scope.info = {
-    num: "1A",
-    bedrooms: 3,
-    rent: 1500.00,
-    bathrooms: 1.5,
-    sqrtft: 2000,
-    isAvailable: true,
-    tenants: ["Joe", "Darien"]
-  }
+//  $scope.info = {
+////    property: {},
+////    aptNum: {type: String, required: true},
+////    rent: {type: Number, required: true},
+////    rentDue: Date,
+////    sqrfoot: Number,
+////    isAvailable: Boolean,
+////    tenants: []
+//  }
 })
 
-.controller('loginCtrl', function ($scope) {
+.controller('loginCtrl', function ($scope, userService) {
   $scope.newOne = "false";
   $scope.data = {};
   
   $scope.newAccount = function () {
     $scope.newOne = true;
-    $scope.buttonText = "Create Account"
+    $scope.buttonText = "Create Account";
+    $scope.data = {};
+  }
+  
+  $scope.login = function() {
+    userService.login($scope.data)
+    .success(function(data, status){
+      console.log(data);
+    })
+    .error(function(err){
+      console.error(err);
+    }) 
   }
 
   $scope.createAccount = function () {}

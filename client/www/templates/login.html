@@ -1,6 +1,10 @@
 <ion-view view-title="Login" name="login-view">
   <ion-content class="padding">
       <div class="list list-inset">
+          <label class="item item-input" ng-show="newOne ===true">
+              <input type="text" placeholder="Full Name" ng-model="data.fullName" >
+          </label>
+          
           <label class="item item-input">
               <input type="text" placeholder="Username" ng-model="data.username">
           </label>
