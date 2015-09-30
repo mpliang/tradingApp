@@ -6,7 +6,8 @@ var userSchema = new Schema({
   name: {type: String, required: true},
   email: {type: String, required: true},
   password: {type: String, required: true},
-  isManager: {type: Boolean, required: true},
+  isManager: {type: Boolean, required: true,  default: false},
+  isAdmin: {type: Boolean, required: true,  default: false},
   rentDue: Date
 });
 
