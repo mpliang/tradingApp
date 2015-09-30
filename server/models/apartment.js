@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var apartmentSchema = new Schema({
-  property: Property;
+  property: Property,
   aptNum: {type: String, required: true},
   rent: {type: Number, required: true},
   rentDue: Date,
