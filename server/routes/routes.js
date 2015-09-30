@@ -37,7 +37,7 @@ module.exports = function (app) {
 
   app.post('/login', passport.authenticate('local'), function(req, res) {
       console.log(req.body);
-      Account.findById(req.body._id, function(err, account){
+      Account.findOne({username: req.body.username}, function(err, account){
         res.send(account);
         console.log(account);
       });
