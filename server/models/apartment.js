@@ -8,7 +8,7 @@ var apartmentSchema = new Schema({
   rentDue: Date,
   sqrfoot: Number,
   isAvailable: Boolean,
-  tenants: []
+  // tenants: []
 });
 
 var Apartment = mongoose.model("Apartment", apartmentSchema);

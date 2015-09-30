@@ -4,7 +4,9 @@ var Account = require('../models/user');
 module.exports = function (app) {
 
   app.get('/', function (req, res) {
-      res.render('index', { user : req.user });
+    Account.find({}, function(err, users){
+      res.send(users);
+    });
   });
 
   app.get('/register', function(req, res) {
@@ -19,17 +21,19 @@ module.exports = function (app) {
         }
 
         passport.authenticate('local')(req, res, function () {
-          // res.redirect('/');
+          res.send(200);
         });
     });
   });
 
   app.get('/login', function(req, res) {
       res.render('login', { user : req.user });
+      res.send(200);
   });
 
   app.post('/login', passport.authenticate('local'), function(req, res) {
       console.log("success", res);
+      res.send(200);
       // res.redirect('/');
   });
 
