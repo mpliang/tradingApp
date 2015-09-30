@@ -33,12 +33,14 @@ module.exports = function (app) {
 
   app.get('/login', function(req, res) {
       // res.render('login', { user : req.user });
-      res.send(req.body);
   });
 
   app.post('/login', passport.authenticate('local'), function(req, res) {
-      res.send(req.body);
       console.log(req.body);
+      Account.findById(req.body._id, function(err, account){
+        res.send(account);
+        console.log(account);
+      });
       // res.redirect('/');
   });
 
