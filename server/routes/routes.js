@@ -1,16 +1,21 @@
 var passport = require('passport');
 var Account = require('../models/user');
+var Apartment = require('../models/apartment');
 
 module.exports = function (app) {
 
+  /*User routes*/
+
   app.get('/', function (req, res) {
     Account.find({}, function(err, users){
+      console.log(err);
       res.send(users);
+      console.log(users);
     });
   });
 
   app.get('/register', function(req, res) {
-      res.render('register', { });
+      res.render('register', {});
   });
 
   app.post('/register', function(req, res) {
@@ -21,19 +26,19 @@ module.exports = function (app) {
         }
 
         passport.authenticate('local')(req, res, function () {
-          res.send(200);
+          res.send(res);
         });
     });
   });
 
   app.get('/login', function(req, res) {
       res.render('login', { user : req.user });
-      res.send(200);
+      res.send(res);
   });
 
   app.post('/login', passport.authenticate('local'), function(req, res) {
       console.log("success", res);
-      res.send(200);
+      res.send(res);
       // res.redirect('/');
   });
 
@@ -44,6 +49,21 @@ module.exports = function (app) {
 
   app.get('/ping', function(req, res){
       res.send("pong!", 200);
+  });
+
+  /*Apartment routes*/
+
+  app.post('/apartment', function(req, res){
+    var apartment = new Apartment(req.body);
+    apartment.save(function(err, savedApartment){
+      res.send();
+    });
+  });
+
+  app.get('/apartment', function(req, res){
+    Apartment.find({}, function(err, apartments){
+      res.send(apartments);
+    })
   });
 
 };

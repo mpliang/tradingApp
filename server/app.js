@@ -52,8 +52,9 @@ passport.deserializeUser(User.deserializeUser());
 
 mongoose.connect('mongodb://localhost/apartmentManager');
 
-require('./routes/user')(app);
-require('./routes/apartment')(app);
+require('./routes/routes')(app);
+
+
 // mongo config
 // var MONGOLAB_URI= "add_your_mongolab_uri_here"
 // var mongo = process.env.MONGOLAB_URI || 'mongodb://localhost/node-bootstrap3-template'
