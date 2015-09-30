@@ -8,6 +8,15 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+var corsMiddleware = function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With");
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+  next();
+};
+
+app.use(corsMiddleware);
+
 // global config
 var app = express();
 app.set('port', process.env.PORT || 1337);
@@ -24,14 +33,6 @@ app.use(passport.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-var corsMiddleware = function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With");
-  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
-  next();
-};
-
-app.use(corsMiddleware);
 
 // env config
 app.configure('development', function(){
