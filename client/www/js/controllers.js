@@ -37,4 +37,36 @@ angular.module('starter.controllers', [])
     isAvailable: true,
     tenants: ["Joe", "Darien"]
   }
-});
+})
+
+.controller('loginCtrl', function ($scope) {
+  $scope.newOne = "false";
+  $scope.data = {};
+  
+  $scope.newAccount = function () {
+    $scope.newOne = true;
+    $scope.buttonText = "Create Account"
+  }
+
+  $scope.createAccount = function () {}
+  $scope.checkInput = function () {
+    if ($scope.data === undefined) {
+      console.log("data is undefined")
+      return false;  
+    }
+    if ($scope.data.username === undefined) {
+      return false;
+    }
+    if ($scope.data.password === undefined) {
+      return false;
+    }
+    if ($scope.data.confirmPassword === undefined) {
+      return false;
+    }
+    if ($scope.data.password !== $scope.data.confirmPassword) {
+      return false;
+    }
+    console.log("true");
+    return true;
+  }
+})
