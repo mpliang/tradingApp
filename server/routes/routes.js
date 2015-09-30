@@ -26,19 +26,19 @@ module.exports = function (app) {
         }
 
         passport.authenticate('local')(req, res, function () {
-          res.send(res);
+          res.send(req.body);
         });
     });
   });
 
   app.get('/login', function(req, res) {
       res.render('login', { user : req.user });
-      res.send(res);
+      res.send(req.body);
   });
 
   app.post('/login', passport.authenticate('local'), function(req, res) {
       console.log("success", res);
-      res.send(res);
+      res.send(req.body);
       // res.redirect('/');
   });
 
