@@ -1,0 +1,39 @@
+<ion-view view-title="{{chat.name}}">
+  <ion-content class="padding">
+   <div class="list">
+
+  <a class="item item-icon-left" href="#">
+    <i class="icon ion-key"></i>
+     Apartment Number: {{info.num}}
+  </a>
+
+  <a class="item item-icon-left" href="#">
+    <i class="icon ion-email"></i>
+     Bedrooms: {{info.bedrooms}}
+  </a>
+   <a class="item item-icon-left" href="#">
+    <i class="icon ion-cash"></i>
+     Rent: ${{info.rent}}
+  </a>
+
+  <a class="item item-icon-left" href="#">
+    <i class="icon ion-waterdrop"></i>
+     Bathrooms: {{info.bathrooms}}
+  </a>
+  <a class="item item-icon-left" href="#">
+    <i class="icon ion-email"></i>
+     Square Feet: {{info.sqrtft}}
+  </a>
+  <a class="item item-icon-left" href="#">
+    <i class="icon ion-email"></i>
+     Available: {{info.isAvailable}}
+  </a>
+  <a class="item item-icon-left" href="#">
+    <i class="icon ion-ios-people"></i>
+     Tenants: {{info.tenants.join(" ")}}
+  </a>
+
+
+</div>
+  </ion-content>
+</ion-view>

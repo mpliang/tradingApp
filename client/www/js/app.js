@@ -77,7 +77,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'AccountCtrl'
       }
     }
-  });
+  })
+     .state('tab.aptDetail', {
+      url: '/apts/:aptID',
+      views: {
+        'tab-apts': {
+          templateUrl: 'templates/aptDetail.html',
+          controller: 'aptCtrl'
+        }
+      }
+    });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');

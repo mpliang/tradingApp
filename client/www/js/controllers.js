@@ -25,4 +25,16 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
+})
+
+.controller('aptCtrl', function($scope) {
+  $scope.info = {
+    num: "1A",
+    bedrooms: 3,
+    rent: 1500.00,
+    bathrooms: 1.5,
+    sqrtft: 2000,
+    isAvailable: true,
+    tenants: ["Joe", "Darien"]
+  }
 });
