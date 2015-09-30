@@ -32,13 +32,13 @@ module.exports = function (app) {
   });
 
   app.get('/login', function(req, res) {
-      res.render('login', { user : req.user });
+      // res.render('login', { user : req.user });
       res.send(req.body);
   });
 
   app.post('/login', passport.authenticate('local'), function(req, res) {
-      console.log("success", res);
       res.send(req.body);
+      console.log(req.body);
       // res.redirect('/');
   });
 
