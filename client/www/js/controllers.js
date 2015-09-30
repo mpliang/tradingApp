@@ -25,4 +25,48 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
-});
+})
+
+.controller('aptCtrl', function($scope) {
+  $scope.info = {
+    num: "1A",
+    bedrooms: 3,
+    rent: 1500.00,
+    bathrooms: 1.5,
+    sqrtft: 2000,
+    isAvailable: true,
+    tenants: ["Joe", "Darien"]
+  }
+})
+
+.controller('loginCtrl', function ($scope) {
+  $scope.newOne = "false";
+  $scope.data = {};
+  
+  $scope.newAccount = function () {
+    $scope.newOne = true;
+    $scope.buttonText = "Create Account"
+  }
+
+  $scope.createAccount = function () {}
+  $scope.checkInput = function () {
+    if ($scope.data === undefined) {
+      console.log("data is undefined")
+      return false;  
+    }
+    if ($scope.data.username === undefined) {
+      return false;
+    }
+    if ($scope.data.password === undefined) {
+      return false;
+    }
+    if ($scope.data.confirmPassword === undefined) {
+      return false;
+    }
+    if ($scope.data.password !== $scope.data.confirmPassword) {
+      return false;
+    }
+    console.log("true");
+    return true;
+  }
+})

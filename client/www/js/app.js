@@ -30,7 +30,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-
+  
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',
@@ -77,9 +77,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'AccountCtrl'
       }
     }
-  });
+  })
+     .state('tab.aptDetail', {
+      url: '/apts/:aptID',
+      views: {
+        'tab-apts': {
+          templateUrl: 'templates/aptDetail.html',
+          controller: 'aptCtrl'
+        }
+      }
+    })
+   .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html',
+      controller: 'loginCtrl'
+  })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/login');
 
 });
