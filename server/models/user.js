@@ -4,9 +4,8 @@ var passportLocalMongoose = require('passport-local-mongoose');
 
 var userSchema = new Schema({
   username: {type: String, required: true},
-  isManager: {type: Boolean, required: true,  default: false},
-  isAdmin: {type: Boolean, required: true,  default: false},
-  rentDue: Date
+  isManager: {type: Boolean,  default: false},
+  isAdmin: {type: Boolean,  default: false}
 });
 
 userSchema.plugin(passportLocalMongoose);

@@ -53,6 +53,7 @@ passport.deserializeUser(User.deserializeUser());
 mongoose.connect('mongodb://localhost/apartmentManager');
 
 require('./routes/user')(app);
+require('./routes/apartment')(app);
 // mongo config
 // var MONGOLAB_URI= "add_your_mongolab_uri_here"
 // var mongo = process.env.MONGOLAB_URI || 'mongodb://localhost/node-bootstrap3-template'
@@ -62,7 +63,7 @@ require('./routes/user')(app);
 // var Model_Name = require('add_your_models_here');
 
 // routes
-app.get('/', routes.index);
+// app.get('/', routes.index);
 app.get('/ping', routes.ping);
 
 // run server
