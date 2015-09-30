@@ -56,7 +56,7 @@ module.exports = function (app) {
   app.post('/apartment', function(req, res){
     var apartment = new Apartment(req.body);
     apartment.save(function(err, savedApartment){
-      res.send();
+      res.send(savedApartment);
     });
   });
 
