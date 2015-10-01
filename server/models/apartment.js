@@ -10,7 +10,7 @@ var apartmentSchema = new Schema({
   bathrooms: Number,
   rentDue: Date,
   sqrfoot: Number,
-  isAvailable: Boolean,
+  isAvailable: {type: Boolean, default: true},
   picture: String,
   tenants: [],
   applicants: []
