@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var Mongoose = require('mongoose');
+var Schema = Mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
 var Apartment = require('./apartment');
 
@@ -12,6 +12,6 @@ var userSchema = new Schema({
 
 userSchema.plugin(passportLocalMongoose);
 
-var User = mongoose.model("User", userSchema);
+var User = Mongoose.model("User", userSchema);
 
 module.exports = User;

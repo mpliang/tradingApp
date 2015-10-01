@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var Mongoose = require('mongoose');
+var Schema = Mongoose.Schema;
 var User = require('./user');
 
 var propertySchema = new Schema({
@@ -9,6 +9,6 @@ var propertySchema = new Schema({
   address: String
 });
 
-var Property = mongoose.model("Property", propertySchema);
+var Property = Mongoose.model("Property", propertySchema);
 
 module.exports = Property;

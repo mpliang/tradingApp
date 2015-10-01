@@ -1,5 +1,5 @@
 var Mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var Schema = Mongoose.Schema;
 var Property = require('./property');
 
 var apartmentSchema = new Schema({
@@ -13,6 +13,6 @@ var apartmentSchema = new Schema({
   applicants: []
 });
 
-var Apartment = mongoose.model("Apartment", apartmentSchema);
+var Apartment = Mongoose.model("Apartment", apartmentSchema);
 
 module.exports = Apartment;
