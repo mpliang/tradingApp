@@ -86,13 +86,10 @@ angular.module('starter.controllers', [])
                 console.log(status);
             })
         $scope.click = function(aptID) {
-          if (user.isTenant){
             $state.go('tab.aptDetail');
             aptService.current = aptID;
-          } else {
-            $state.go('tab.properties');
-          }
-        }
+          } 
+  
     })
 
     .controller('aptDetailCtrl', function($scope, aptService, userService) {
@@ -138,8 +135,10 @@ angular.module('starter.controllers', [])
                     userService.user = data;
                     if (data.isManager) {
                         $state.go('tab.manager');
-                    } else {
+                    } else if (data.isTenent) {
                         $state.go('tab.aptDetail');
+                    } else {
+                      $state.go('tab.properties');
                     }
 
                 })
