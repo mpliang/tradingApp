@@ -1,18 +1,45 @@
+var express = require('express');
+var path = require('path');
+var favicon = require('static-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+
+
+var mongoose = require('mongoose');
+// Connect to DB
+
+
+var app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+app.use(favicon());
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Configuring Passport
+var passport = require('passport');
+var expressSession = require('express-session');
+// TODO - Why Do we need this key ?
+app.use(expressSession({secret: 'mySecretKey'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 // dependencies
 var fs = require('fs');
 var http = require('http');
-var express = require('express');
 var routes = require('./routes');
-var logger = require('morgan');
-var path = require('path');
-var mongoose = require('mongoose');
-var passport = require('passport');
+
 var LocalStrategy = require('passport-local').Strategy;
 
-
-
 // global config
-var app = express();
 
 var corsMiddleware = function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -23,32 +50,12 @@ var corsMiddleware = function(req, res, next) {
 
 app.use(corsMiddleware);
 app.set('port', process.env.PORT || 1337);
-app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
-app.set('view options', { layout: false });
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(bodyParser.urlencoded());
-app.use(express.methodOverride());
-app.use(express.cookieParser('your secret here'));
-app.use(express.session());
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 var flash = require('connect-flash');
 app.use(flash());
-// app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
-
 
 // env config
-app.configure('development', function(){
-    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
-
-app.configure('production', function(){
-    app.use(express.errorHandler());
-});
 
 var User = require('./models/user');
 passport.use(new LocalStrategy(User.authenticate()));
