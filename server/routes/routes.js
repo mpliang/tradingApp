@@ -84,20 +84,20 @@ managers add and remove apartments from and to their properties*/
     });
   });
 
-  /*delete apartment*/
-  // app.delete('/deleteApartment', function(req, res){
-  //   Apartment.findById(req.body._id, function(err, apartment){
-  //     Property.findById(apartment.property, function(err, property){
-  //       property.apartments.forEach(function(apartments, idx){
-  //         if(apartments._id.toString() === property._id.toString()){
-  //           property.apartments.splice(idx, 1);
-  //         }
-  //       });
-  //       property.save();
-  //     });
-  //     Apartment.remove();
-  //   });
-  // });
+  // /*delete apartment*/
+  // // app.delete('/deleteApartment', function(req, res){
+  // //   Apartment.findById(req.body._id, function(err, apartment){
+  // //     Property.findById(apartment.property, function(err, property){
+  // //       property.apartments.forEach(function(apartments, idx){
+  // //         if(apartments._id.toString() === property._id.toString()){
+  // //           property.apartments.splice(idx, 1);
+  // //         }
+  // //       });
+  // //       property.save();
+  // //     });
+  // //     Apartment.remove();
+  // //   });
+  // // });
 
   /*get all apartment*/
   app.get('/apartment', function(req, res){

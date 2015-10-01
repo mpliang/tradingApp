@@ -6,6 +6,8 @@ var apartmentSchema = new Schema({
   property: {type: Mongoose.Schema.ObjectId , ref: 'Property', required: true},
   aptNum: {type: String, required: true},
   rent: {type: Number, required: true},
+  bedrooms: Number,
+  bathrooms: Number,
   rentDue: Date,
   sqrfoot: Number,
   isAvailable: Boolean,
