@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var Property = require('property');
+var Property = require('./property');
 
 var apartmentSchema = new Schema({
   property: {type: Mongoose.Schema.ObjectId , ref: 'Property'},
