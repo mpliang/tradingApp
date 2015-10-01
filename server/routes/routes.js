@@ -4,7 +4,7 @@ var Apartment = require('../models/apartment');
 
 module.exports = function (app) {
 
-  /*User routes*/
+  /*login register routes*/
 
   app.get('/', function (req, res) {
     Account.find({}, function(err, users){
@@ -53,6 +53,19 @@ module.exports = function (app) {
       res.send("pong!", 200);
   });
 
+  /*user routes*/
+
+  app.get('/tenantLookup', function(req, res){
+
+  });
+
+/*admin add properties
+admin remove properties
+
+admin add managers
+admin remove managers
+
+managers add and remove apartments from and to their properties*/
 
   /*Manager routes*/
 
@@ -96,6 +109,20 @@ module.exports = function (app) {
     });
   });
 
+  /*admin routes*/
 
+  app.post('/addManager', function(req, res){
+   Account.findById(req.body.uid, function(err, user){
+     Property.findById(req.body.pid, function(err, property){
+       property.manager = user;
+       apartment.save();
+       res.send("ok");
+     });
+   });
+ });
+
+ // app.delete('/deleteManager', function(req, res){
+ //   Account.findById(req.body.uid)
+ // });
 
 };
