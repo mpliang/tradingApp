@@ -24,6 +24,7 @@ angular.module('starter.controllers', [])
 .controller('AccountCtrl', function ($scope, userService, aptService) {
   $scope.data = {};
   $scope.user = userService.user;
+  
     $scope.addApartment= function(){
     aptService.add($scope.data);
     console.log("scopedata", $scope.data);

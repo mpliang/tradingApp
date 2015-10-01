@@ -22,7 +22,7 @@ angular.module('starter.services', [])
      return $http.get("http://localhost:1337/apartment");
   }
   this.add = function (data) {
-      return $http.post("http://localhost:1337/apartment", data);
+      return $http.post("http://localhost:1337/addApartment", data);
   }
 })
 
