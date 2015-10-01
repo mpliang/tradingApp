@@ -119,6 +119,12 @@ managers add and remove apartments from and to their properties*/
     });
   });
 
+  app.get('/showApplicants', function(req, res){
+    Apartment.findById(req.body.uid, function(err, apartment){
+      res.send(apartment.applicants);
+    });
+  });
+
   /*add a tenant*/
   app.post('/addTenant', function(req, res){
     Account.findById(req.body.uid, function(err, user){
