@@ -120,7 +120,7 @@ managers add and remove apartments from and to their properties*/
   });
 
   app.get('/showApplicants', function(req, res){
-    Apartment.findById(req.body.uid, function(err, apartment){
+    Apartment.findById(req.body.aid, function(err, apartment){
       res.send(apartment.applicants);
     });
   });
