@@ -7,7 +7,7 @@ var userSchema = new Schema({
   username: {type: String, required: true},
   isManager: {type: Boolean,  default: false},
   isAdmin: {type: Boolean,  default: false},
-  apartmentNum: {type: Mongoose.Schema.ObjectId , ref: 'Apartment'};
+  apartmentNum: {type: Mongoose.Schema.ObjectId , ref: 'Apartment'}
 });
 
 userSchema.plugin(passportLocalMongoose);
