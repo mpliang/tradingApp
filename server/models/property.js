@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var User = require('./user');
 
 var propertySchema = new Schema({
-  manager: User,
-  apartment: [{object apartments}],
+  manager: {type: Mongoose.Schema.ObjectId , ref: 'User'},
+  apartments: [],
   name: String,
   address: String
 });

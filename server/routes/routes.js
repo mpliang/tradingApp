@@ -84,15 +84,13 @@ module.exports = function (app) {
     Apartment.findById(req.body.aid, function(err, apartment){
       Account.findById(req.body.uid, function(err, user){
         if(user){
-          apartment.tenants.forEach(function(tenant, index){
-            console.log(tenant._id);
-            if(tenant._id === user._id){
-              // console.log("tenant_id", tenant._id );
-              tenants.splice(index, 1);
-              apartment.save();
+          console.log(apartment.tenants);
+          apartment.tenants.forEach(function(tenant, idx){
+            if(tenant._id.toString() === user._id.toString() || tenant._id.toString() === undefined){
+              apartment.tenants.splice(idx, 1);
             }
-            res.send("ok");
           });
+          apartment.save();
         }
       });
     });
