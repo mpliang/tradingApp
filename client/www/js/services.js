@@ -18,7 +18,16 @@ angular.module('starter.services', [])
   this.get = function () {
     return $http.get("http://localhost:1337/showUsers");
   }
+  
+  this.apply = function(data){
+    return $http.post("http://localhost:1337/pendingApproval", data);
+  }
+   this.getApplicants = function (id) {
+    return $http.get("http://localhost:1337/showApplicants?uid=" + id);
+  }
 })
+
+
 
 .service('aptService', function ($http) {
   this.current = "";

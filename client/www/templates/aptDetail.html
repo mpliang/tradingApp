@@ -32,7 +32,10 @@
     <i class="icon ion-ios-people"></i>
      Tenants: {{info.tenants.join(", ")}}
   </a>
-<button class="button button-block button-positive" ng-click="apply()">Apply for Apartment</button>
+<button class="button button-block button-positive" ng-if="checkButton()" ng-click="apply()">Apply for Apartment</button>
+<button class="button button-block button-assertive" ng-if="applied">Applied</button>
+
+
 
 </div>
   </ion-content>

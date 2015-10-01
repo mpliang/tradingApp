@@ -10,8 +10,8 @@
                     Properties
                 </div>
                 <select ng-model="data.property">
-                     <option ng-selected="true">Property Choices</option>
-                    <option ng-repeat="property in properties">{{property.name}}</option>
+        
+                    <option ng-selected="$index === 0" ng-repeat="property in properties track by $index">{{property.name}}</option>
                 </select>
             </label>
 
@@ -47,7 +47,7 @@
                         Manager
                     </div>
                     <select ng-model="property.managerName">
-                        <option ng-repeat="manager in managers">{{manager.username}}</option>
+                        <option ng-selected="$index === 0" ng-repeat="manager in managers track by $index">{{manager.username}}</option>
                     </select>
                 </label>
 

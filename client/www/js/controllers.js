@@ -91,9 +91,16 @@ angular.module('starter.controllers', [])
           } 
   
     })
-
+//!user.isTenant && !applied || (!user.isAdmin || !user.isManager)
     .controller('aptDetailCtrl', function($scope, aptService, userService) {
-
+        $scope.applied = false;
+        $scope.apply = function (){
+          userService.apply({aid: aptService.current, uid: userService.user._id})
+          .success(function(data, status){
+            $scope.applied = true;
+            console.log(data);
+          })
+        }
         if (aptService.apartments.length > 0) {
             findApt(aptService.current)
             console.log("current", aptService.current);
@@ -105,6 +112,15 @@ angular.module('starter.controllers', [])
                     findApt(userService.user.apartmentNum);
                 })
         };
+        $scope.checkButton = function(){
+          if (userService.user.isTenant || $scope.applied || userService.user.isManager){
+            return false;
+          } else {return true}
+        }
+        userService.getApplicants(aptService.current)
+          .success(function(data, status) {
+            $scope.applicants = data;
+        }
 
         function findApt(id) {
             aptService.apartments.forEach(function(apt) {
