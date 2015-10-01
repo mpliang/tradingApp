@@ -20,6 +20,12 @@ angular.module('starter.controllers', [])
     $scope.property = {};
 
     $scope.addApartment = function() {
+      $scope.properties.forEach(function(property) {
+        console.log(property.name, $scope.data.property);
+        if(property.name === $scope.data.property) {
+          $scope.data.property = property._id;
+        }
+      })
         aptService.add($scope.data);
         console.log("scopedata", $scope.data);
     }
@@ -46,11 +52,17 @@ angular.module('starter.controllers', [])
                 $state.go('tab.properties');
             })
     }
+         propertyService.get()
+        .success(function(data, status) {
+            $scope.properties = data;
+            console.log(data);
+        })
 })
 
 .controller('propCtrl', function($scope, userService, propertyService, $state) {
         propertyService.get()
             .success(function(data, status) {
+          
                 propertyService.properties = data;
                 $scope.properties = data;
                 console.log(data);
@@ -74,8 +86,12 @@ angular.module('starter.controllers', [])
                 console.log(status);
             })
         $scope.click = function(aptID) {
+          if (user.isTenant){
             $state.go('tab.aptDetail');
             aptService.current = aptID;
+          } else {
+            $state.go('tab.properties');
+          }
         }
     })
 

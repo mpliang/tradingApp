@@ -5,6 +5,16 @@
                 <li class="item">Username: {{user.username}}</li>
 
             </ul>
+            <label class="item item-input item-select" ng-if="user.isAdmin === true">
+                <div class="input-label">
+                    Properties
+                </div>
+                <select ng-model="data.property">
+                     <option ng-selected="true">Property Choices</option>
+                    <option ng-repeat="property in properties">{{property.name}}</option>
+                </select>
+            </label>
+
             <div class="list list-inset">
                 <label class="item item-input">
                     <input type="text" placeholder="Apartment Number" ng-model="data.aptNum">

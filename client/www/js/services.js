@@ -32,7 +32,7 @@ angular.module('starter.services', [])
 .service('propertyService', function ($http) {
   this.current = "";
   this.get = function (){
-     return $http.get("http://localhost:1337/property");
+     return $http.get("http://localhost:1337/showProperties");
   }
   this.add = function (data) {
       return $http.post("http://localhost:1337/addProperty", data);
