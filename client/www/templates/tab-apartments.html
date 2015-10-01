@@ -1,12 +1,32 @@
-<ion-view view-title="{{chat.name}}">
-  <ion-content class="padding">
+<ion-view view-title={{property}}>
+<ion-content class="padding">
+ <div class="list card">
+
+  <div class="item item-avatar">
+    <img src="http://media.salon.com/2015/02/craig_stephen_hicks.jpg">
+    <h2>Manager: Marty McFly</h2>
+    <p><i class="icon fa fa-phone"> (310) 423-1232</i></p>
+  </div>
+
+  <div class="item item-body">
+    <img class="full-image" src="http://www.intermatic.com/~/media/intermatic/solutions/apartment_complex.jpg?h=500&la=en&w=750" height="475" width="400">
+    <p>
+      3420384 Frank Road
+      Boston, MA 92094
+    </p>
+
+  </div>
+</div>
+ 
    <div class="list">
 
-  <a class="item item-icon-left" href="#" ng-repeat="apt in apartments" ng-click="click(apt.aptNum)">
-    <i class="icon ion-home"></i>
-    {{apt.aptNum}}
-  </a>
-
+<a class="item item-thumbnail-left" href="#"  ng-repeat="apt in apartments" ng-click="click(apt._id)">
+   <img src="http://interiordesigningideas.co/wp-content/uploads/2015/08/apartment-interiors-lovely-decoration-on-apartment-designing.jpg">
+   <h2>Apartment: {{apt.aptNum}}</h2>
+    <i class="icon fa fa-group"></i> {{apt.tenants.length}}
+   
+   </a>
+   
 
 
 </div>

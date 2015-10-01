@@ -3,7 +3,27 @@
     <ion-list>
     <ul class="list">
     <li class="item">Username: {{user.username}}</li>
+
     </ul>
+    <div class="list list-inset">
+            <label class="item item-input">
+                <input type="text" placeholder="Apartment Number" ng-model="data.aptNum">
+            </label>
+
+            <label class="item item-input">
+                <input type="text" placeholder="Square Feet" ng-model="data.sqrfoot">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Rent" ng-model="data.rent">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Bedrooms" ng-model="data.rooms">
+            </label>
+               <label class="item item-input">
+                <input type="text" placeholder="Bathrooms" ng-model="data.bathrooms">
+            </label>
+            <button class="button button-block button-positive" ng-click="addApartment()">Add Apartment</button>
+        </div>
 
     </ion-list>
   </ion-content>

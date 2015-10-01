@@ -97,7 +97,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-apts': {
           templateUrl: 'templates/aptDetail.html',
-          controller: 'aptCtrl'
+          controller: 'aptDetailCtrl'
         }
       }
     })
