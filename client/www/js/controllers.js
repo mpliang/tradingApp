@@ -26,6 +26,12 @@ angular.module('starter.controllers', [])
 })
 
 .controller('aptCtrl', function($scope, aptService, userService) {
+  
+  $scope.apartments = [
+    {aptNum: "1A", tenants: [1,2], rent: 500},
+    {aptNum: "2A", tenants: [], rent: 999},
+    {aptNum: "3A", tenants: [], rent: 200}
+  ]
   aptService.get()
       .success(function(data, status){
         console.log(data);

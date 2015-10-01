@@ -82,7 +82,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/apts',
       views: {
         'tab-apts': {
-          templateUrl: 'templates/aptDetail.html',
+          templateUrl: 'templates/tab-apartments.html',
           controller: 'aptCtrl'
         }
       }
