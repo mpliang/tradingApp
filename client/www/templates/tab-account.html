@@ -1,10 +1,58 @@
 <ion-view view-title="Account">
-  <ion-content>
-    <ion-list>
-    <ul class="list">
-    <li class="item">Username: {{user.username}}</li>
-    </ul>
+    <ion-content>
+        <ion-list ng-if="user.isManager === true">
+            <ul class="list">
+                <li class="item">Username: {{user.username}}</li>
 
-    </ion-list>
-  </ion-content>
+            </ul>
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <input type="text" placeholder="Apartment Number" ng-model="data.aptNum">
+                </label>
+
+                <label class="item item-input">
+                    <input type="text" placeholder="Square Feet" ng-model="data.sqrfoot">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Rent" ng-model="data.rent">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Bedrooms" ng-model="data.rooms">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Bathrooms" ng-model="data.bathrooms">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Picture URL" ng-model="data.picture">
+                </label>
+                <button class="button button-block button-positive" ng-click="addApartment()">Add Apartment</button>
+            </div>
+
+        </ion-list>
+        <ion-list ng-if="user.isAdmin === true">
+            <div class="list list-inset">
+
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Manager
+                    </div>
+                    <select>
+                        <option ng-repeat="manager in managers">{{manager.name}}</option>
+                    </select>
+                </label>
+
+                <label class="item item-input">
+                    <input type="text" placeholder="Name" ng-model="property.name">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Address" ng-model="property.address">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Picture URL" ng-model="property.picture">
+                </label>
+                <button class="button button-block button-positive" ng-click="addProperty()">Add Property</button>
+            </div>
+
+        </ion-list>
+    </ion-content>
 </ion-view>

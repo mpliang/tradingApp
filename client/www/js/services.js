@@ -7,7 +7,6 @@ angular.module('starter.services', [])
 
 .service('userService', function ($http, $state) {
 
-  //  var token
   this.login = function (data) {
     return $http.post("http://localhost:1337/login", data);
 
@@ -18,8 +17,14 @@ angular.module('starter.services', [])
 })
 
 .service('aptService', function ($http) {
+  this.current = "";
   this.get = function (){
      return $http.get("http://localhost:1337/apartment");
   }
+  this.add = function (data) {
+      return $http.post("http://localhost:1337/addApartment", data);
+  }
 })
+
+
 
