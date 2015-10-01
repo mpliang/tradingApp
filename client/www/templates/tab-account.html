@@ -36,8 +36,8 @@
                     <div class="input-label">
                         Manager
                     </div>
-                    <select>
-                        <option ng-repeat="manager in managers">{{manager.name}}</option>
+                    <select ng-model="property.managerName">
+                        <option ng-repeat="manager in managers">{{manager.username}}</option>
                     </select>
                 </label>
 

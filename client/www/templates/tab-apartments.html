@@ -9,7 +9,7 @@
   </div>
 
   <div class="item item-body">
-    <img class="full-image" src="http://www.intermatic.com/~/media/intermatic/solutions/apartment_complex.jpg?h=500&la=en&w=750" height="475" width="400">
+    <img class="full-image" src="http://www.intermatic.com/~/media/intermatic/solutions/apartment_complex.jpg?h=500&la=en&w=750">
     <p>
       3420384 Frank Road
       Boston, MA 92094
@@ -21,7 +21,7 @@
    <div class="list">
 
 <a class="item item-thumbnail-left" href="#"  ng-repeat="apt in apartments" ng-click="click(apt._id)">
-   <img src="http://interiordesigningideas.co/wp-content/uploads/2015/08/apartment-interiors-lovely-decoration-on-apartment-designing.jpg">
+   <img src="{{apt.picture}}">
    <h2>Apartment: {{apt.aptNum}}</h2>
     <i class="icon fa fa-group"></i> {{apt.tenants.length}}
    

@@ -14,6 +14,10 @@ angular.module('starter.services', [])
   this.register = function (data) {
     return $http.post("http://localhost:1337/register", data);
   }
+  
+  this.get = function () {
+    return $http.get("http://localhost:1337/showUsers");
+  }
 })
 
 .service('aptService', function ($http) {
@@ -23,6 +27,15 @@ angular.module('starter.services', [])
   }
   this.add = function (data) {
       return $http.post("http://localhost:1337/addApartment", data);
+  }
+})
+.service('propertyService', function ($http) {
+  this.current = "";
+  this.get = function (){
+     return $http.get("http://localhost:1337/property");
+  }
+  this.add = function (data) {
+      return $http.post("http://localhost:1337/addProperty", data);
   }
 })
 
