@@ -122,7 +122,13 @@ managers add and remove apartments from and to their properties*/
  });
 
  // app.delete('/deleteManager', function(req, res){
- //   Account.findById(req.body.uid)
+ //   Account.findById(req.body.uid, function(err, user){
+ //     Property.findById(req.body.pid, function(err, property){
+ //       if(property.manager.toString() === user._id.toString()){
+ //
+ //       }
+ //     });
+ //   });
  // });
 
 };
