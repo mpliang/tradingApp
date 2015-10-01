@@ -53,7 +53,8 @@ module.exports = function (app) {
       res.send("pong!", 200);
   });
 
-  /*Apartment routes*/
+
+  /*Manager routes*/
 
   app.post('/apartment', function(req, res){
     var apartment = new Apartment(req.body);
@@ -66,6 +67,35 @@ module.exports = function (app) {
     Apartment.find({}, function(err, apartments){
       res.send(apartments);
     })
+  })
+
+  app.post('/addTenant', function(req, res){
+    Account.findById(req.body.uid, function(err, user){
+      Apartment.findById(req.body.aid, function(err, apartment){
+        console.log(apartment);
+        apartment.tenants.push(user);
+        apartment.save();
+        res.send("ok");
+      });
+    });
   });
+
+  app.delete('/deleteTenant', function(req, res){
+    Apartment.findById(req.body.aid, function(err, apartment){
+      Account.findById(req.body.uid, function(err, user){
+        apartment.tenants.forEach(function(tenant, index){
+          console.log(tenant);
+          if(tenant._id === user._id){
+            console.log("tenant_id", tenant._id );
+            tenants.splice(index, 1);
+            apartment.save();
+          }
+          res.send("ok");
+        });
+      });
+    });
+  });
+
+
 
 };
