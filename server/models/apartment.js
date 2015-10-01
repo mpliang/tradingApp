@@ -13,7 +13,7 @@ var apartmentSchema = new Schema({
   isAvailable: Boolean,
   picture: String,
   tenants: [],
-  applicants: [],
+  applicants: []
 });
 
 var Apartment = Mongoose.model("Apartment", apartmentSchema);

@@ -108,18 +108,35 @@ managers add and remove apartments from and to their properties*/
     })
   })
 
+  app.post('/pendingApproval', function(req, res){
+    Account.findById(req.body.uid, function(err, user){
+      Apartment.findById(req.body.aid, function(err, apartment){
+        console.log(apartment);
+        apartment.applicants.push(user);
+        apartment.save();
+        res.send("ok");
+      });
+    });
+  });
 
   /*add a tenant*/
   app.post('/addTenant', function(req, res){
     Account.findById(req.body.uid, function(err, user){
       Apartment.findById(req.body.aid, function(err, apartment){
-        console.log(apartment);
+        apartment.applicants.forEach(function(applicant, idx){
+          // console.log(applicant._id.toString() === req.body.uid);
+          if(applicant._id.toString() === req.body.uid){
+            apartment.applicants.splice(idx, 1);
+            apartment.save();
+          }
+        });
         apartment.tenants.push(user);
         apartment.save();
         res.send("ok");
       });
     });
   });
+
 
   /*delete a tenant*/
   app.delete('/deleteTenant', function(req, res){
