@@ -101,6 +101,7 @@ angular.module('starter.controllers', [])
 //!user.isTenant && !applied || (!user.isAdmin || !user.isManager)
     .controller('aptDetailCtrl', function($scope, aptService, userService) {
         $scope.applied = false;
+        $scope.user = userService.user;
         $scope.apply = function (){
           userService.apply({aid: aptService.current, uid: userService.user._id})
           .success(function(data, status){
@@ -120,7 +121,7 @@ angular.module('starter.controllers', [])
                 })
         };
         $scope.checkButton = function(){
-          if (userService.user.isTenant || $scope.applied || userService.user.isManager){
+          if (userService.user.isTenant || $scope.applied ||  userService.user.isManager){
             return false;
           } else {return true}
         }
@@ -160,9 +161,6 @@ angular.module('starter.controllers', [])
         $scope.login = function() {
             userService.login($scope.data)
                 .success(function(data, status) {
-                    //      console.log(data);
-                    //      console.log("success");
-                    //      console.log(data);
                     userService.user = data;
                     if (data.isManager) {
                         $state.go('tab.manager');
@@ -210,7 +208,6 @@ angular.module('starter.controllers', [])
             if ($scope.data.password !== $scope.data.confirmPassword) {
                 return false;
             }
-            console.log("true");
             return true;
         }
     })

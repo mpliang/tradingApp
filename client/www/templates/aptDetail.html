@@ -34,9 +34,8 @@
   </a>
 <button class="button button-block button-positive" ng-if="checkButton()" ng-click="apply()">Apply for Apartment</button>
 <button class="button button-block button-assertive" ng-if="applied">Applied</button>
-
 <ul class="list">
-  <li class="item" ng-repeat="applicant in applicants">Applicant Name: {{applicant.username}}<button ng-click="acceptApplicant(applicant)" class="button button-positive pull-right">Accept User</button></li>
+  <li class="item" ng-repeat="applicant in applicants">Applicant Name: {{applicant.username}}<button ng-click="acceptApplicant(applicant)" class="button button-positive pull-right" ng-if="user.isManager === true">Accept</button></li>
 </ul>
 
 </div>

@@ -2,7 +2,6 @@ angular.module('starter.services', [])
 
 .service('loginService', function ($http) {
   var loggedIn = false;
-
 })
 
 .service('userService', function ($http, $state) {
@@ -23,16 +22,12 @@ angular.module('starter.services', [])
     return $http.post("http://localhost:1337/pendingApproval", data);
   }
    this.getApplicants = function (id) {
-     console.log(id);
     return $http.get("http://localhost:1337/showApplicants?aid=" + id);
   }
    this.acceptApplicant = function (data){
      return $http.post("http://localhost:1337/addTenant", data);
    }
 })
-
-
-
 .service('aptService', function ($http) {
   this.current = "";
   this.get = function (){
