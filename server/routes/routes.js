@@ -205,5 +205,11 @@ managers add and remove apartments from and to their properties*/
    })
  });
 
+ app.get('/showProperties', function(req, res){
+   Property.find({}, function(err, properties){
+     res.send(properties);
+   });
+ });
+
 
 };
