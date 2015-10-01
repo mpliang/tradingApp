@@ -78,7 +78,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
-     .state('tab.aptDetail', {
+     .state('tab.manager', {
       url: '/apts',
       views: {
         'tab-apts': {
@@ -92,6 +92,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       templateUrl: 'templates/login.html',
       controller: 'loginCtrl'
   })
+.state('tab.aptDetail', {
+      url: '/apts',
+      views: {
+        'tab-apts': {
+          templateUrl: 'templates/aptDetail.html',
+          controller: 'aptCtrl'
+        }
+      }
+    })
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');

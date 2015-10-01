@@ -2,7 +2,7 @@
   <ion-content class="padding">
    <div class="list">
 
-  <a class="item item-icon-left" href="#" ng-repeat="apt in apartments">
+  <a class="item item-icon-left" href="#" ng-repeat="apt in apartments" ng-click="click(apt.aptNum)">
     <i class="icon ion-home"></i>
     {{apt.aptNum}}
   </a>

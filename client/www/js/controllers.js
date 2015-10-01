@@ -25,7 +25,7 @@ angular.module('starter.controllers', [])
   $scope.user = userService.user;
 })
 
-.controller('aptCtrl', function($scope, aptService, userService) {
+.controller('aptCtrl', function($scope, aptService, userService, $state) {
   
   $scope.apartments = [
     {aptNum: "1A", tenants: [1,2], rent: 500},
@@ -37,7 +37,10 @@ angular.module('starter.controllers', [])
         console.log(data);
         console.log(status);
       })
-  
+  $scope.click = function(aptID) {
+    $state.go('tab.aptDetail');
+    $aptService.current = aptID;
+  }
 })
 
 .controller('loginCtrl', function ($scope, userService, $state, aptService) {
@@ -56,10 +59,13 @@ angular.module('starter.controllers', [])
 //      console.log(data);
 //      console.log("success");
 //      console.log(data);
+      data.isManager = true;
       userService.user = data;
-      
+      if (data.isManager) {
+      $state.go('tab.manager');
+      } else {
       $state.go('tab.aptDetail');
-      
+      }
       
     })
     .error(function(err){
