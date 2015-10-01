@@ -21,25 +21,20 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+.controller('AccountCtrl', function($scope, userService) {
+  $scope.user = userService.user;
 })
 
-.controller('aptCtrl', function($scope) {
-//  $scope.info = {
-////    property: {},
-////    aptNum: {type: String, required: true},
-////    rent: {type: Number, required: true},
-////    rentDue: Date,
-////    sqrfoot: Number,
-////    isAvailable: Boolean,
-////    tenants: []
-//  }
+.controller('aptCtrl', function($scope, aptService, userService) {
+  aptService.get()
+      .success(function(data, status){
+        console.log(data);
+        console.log(status);
+      })
+  
 })
 
-.controller('loginCtrl', function ($scope, userService) {
+.controller('loginCtrl', function ($scope, userService, $state, aptService) {
   $scope.newOne = "false";
   $scope.data = {};
   
@@ -52,14 +47,35 @@ angular.module('starter.controllers', [])
   $scope.login = function() {
     userService.login($scope.data)
     .success(function(data, status){
-      console.log(data);
+//      console.log(data);
+//      console.log("success");
+//      console.log(data);
+      userService.user = data;
+      
+      $state.go('tab.aptDetail');
+      
+      
     })
     .error(function(err){
+      if (err !== undefined) {
       console.error(err);
+      }
     }) 
   }
 
-  $scope.createAccount = function () {}
+  $scope.createAccount = function () {
+    userService.register($scope.data)
+    .success(function(data, status){
+      console.log(data);
+      $scope.login();
+    })
+   .error(function(err){
+      if (err !== undefined) {
+      console.error(err);
+      }
+    })
+  }
+  
   $scope.checkInput = function () {
     if ($scope.data === undefined) {
       console.log("data is undefined")

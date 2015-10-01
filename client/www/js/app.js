@@ -79,7 +79,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
      .state('tab.aptDetail', {
-      url: '/apts/:aptID',
+      url: '/apts',
       views: {
         'tab-apts': {
           templateUrl: 'templates/aptDetail.html',
