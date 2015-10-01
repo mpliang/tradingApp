@@ -9,8 +9,9 @@ var apartmentSchema = new Schema({
   rentDue: Date,
   sqrfoot: Number,
   isAvailable: Boolean,
+  picture: String,
   tenants: [],
-  applicants: []
+  applicants: [],
 });
 
 var Apartment = Mongoose.model("Apartment", apartmentSchema);

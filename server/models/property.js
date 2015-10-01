@@ -6,7 +6,8 @@ var propertySchema = new Schema({
   manager: {type: Mongoose.Schema.ObjectId , ref: 'User'},
   apartments: [],
   name: String,
-  address: String
+  address: String,
+  picture: String
 });
 
 var Property = Mongoose.model("Property", propertySchema);
