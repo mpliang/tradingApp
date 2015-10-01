@@ -5,13 +5,13 @@
                 <li class="item">Username: {{user.username}}</li>
 
             </ul>
-            <label class="item item-input item-select" ng-if="user.isAdmin === true">
+            <label class="item item-input item-select" ng-if="user.isManager === true">
                 <div class="input-label">
                     Properties
                 </div>
-                <select ng-model="data.property">
+                <select>
         
-                    <option ng-selected="$index === 0" ng-repeat="property in properties track by $index">{{property.name}}</option>
+                    <option ng-selected="$index === 0" ng-repeat="property in properties track by $index" ng-click="chooseProp(property.name)">{{property.name}}</option>
                 </select>
             </label>
 

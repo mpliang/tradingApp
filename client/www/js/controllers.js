@@ -18,11 +18,15 @@ angular.module('starter.controllers', [])
     $scope.managers = [];
     $scope.user = userService.user;
     $scope.property = {};
-
+    $scope.chooseProp = function (name){
+      $scope.propertyName = name;
+    }
+     
     $scope.addApartment = function() {
       $scope.properties.forEach(function(property) {
-        console.log(property.name, $scope.data.property);
-        if(property.name === $scope.data.property) {
+        console.log($scope.data)
+        console.log(property.name, $scope.propertyName);
+        if(property.name === $scope.propertyName) {
           $scope.data.property = property._id;
         }
       })
@@ -55,6 +59,9 @@ angular.module('starter.controllers', [])
          propertyService.get()
         .success(function(data, status) {
             $scope.properties = data;
+           if(data.length > 0) {
+             $scope.propertyName = data[0].name
+           }
             console.log(data);
         })
 })
@@ -120,6 +127,14 @@ angular.module('starter.controllers', [])
         userService.getApplicants(aptService.current)
           .success(function(data, status) {
             $scope.applicants = data;
+        })
+        $scope.acceptApplicant = function(applicant){
+          userService.acceptApplicant({aid: aptService.current, uid: applicant._id})
+          .success(function(){
+            $scope.info.tenants.push(applicant);
+            var i = $scope.applicants.indexOf(applicant);
+            $scope.applicants.splice(i, 1);
+          })
         }
 
         function findApt(id) {
