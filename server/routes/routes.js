@@ -83,15 +83,17 @@ module.exports = function (app) {
   app.delete('/deleteTenant', function(req, res){
     Apartment.findById(req.body.aid, function(err, apartment){
       Account.findById(req.body.uid, function(err, user){
-        apartment.tenants.forEach(function(tenant, index){
-          console.log(tenant);
-          if(tenant._id === user._id){
-            console.log("tenant_id", tenant._id );
-            tenants.splice(index, 1);
-            apartment.save();
-          }
-          res.send("ok");
-        });
+        if(user){
+          apartment.tenants.forEach(function(tenant, index){
+            console.log(tenant._id);
+            if(tenant._id === user._id){
+              // console.log("tenant_id", tenant._id );
+              tenants.splice(index, 1);
+              apartment.save();
+            }
+            res.send("ok");
+          });
+        }
       });
     });
   });

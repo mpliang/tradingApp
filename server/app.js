@@ -3,6 +3,7 @@ var fs = require('fs');
 var http = require('http');
 var express = require('express');
 var routes = require('./routes');
+var logger = require('morgan');
 var path = require('path');
 var mongoose = require('mongoose');
 var passport = require('passport');
@@ -25,14 +26,18 @@ app.set('port', process.env.PORT || 1337);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.set('view options', { layout: false });
-app.use(express.logger());
+app.use(express.logger('dev'));
 app.use(express.bodyParser());
+app.use(bodyParser.urlencoded());
 app.use(express.methodOverride());
 app.use(express.cookieParser('your secret here'));
 app.use(express.session());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(app.router);
+
+var flash = require('connect-flash');
+app.use(flash());
+// app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 
