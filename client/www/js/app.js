@@ -101,7 +101,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-  .state('tab.properties', {
+     .state('tab.properties', {
       url: '/properties',
       views: {
         'tab-properties': {
@@ -109,7 +109,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           controller: 'propCtrl'
         }
       }
-    });
+    })
   
 
   // if none of the above states are matched, use this as the fallback
