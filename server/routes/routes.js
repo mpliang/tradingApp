@@ -177,9 +177,15 @@ managers add and remove apartments from and to their properties*/
  /*delete a property*/
 
  app.delete('/deleteProperty', function(req, res){
-   Property.findByIdAndRemove(req.body.pid, function(err){
-     res.send();
+   Property.findByIdAndRemove(req.body.pid, function(err, deletedProperty){
+     res.send(deletedProperty);
    });
+ });
+
+ app.get('/showUsers', function(req, res){
+   Account.find({}, function(err, users){
+     res.send(users);
+   })
  });
 
 
