@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var Mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var Property = require('./property');
 
