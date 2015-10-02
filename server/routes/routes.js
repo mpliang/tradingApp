@@ -170,25 +170,39 @@ managers add and remove apartments from and to their properties*/
     });
   });
 
-  // app.get('/finances', function(req, res){
-  //   var sum = 0;
-  //   Property.find(req.body.pid, function(err, property){
-  //     Apartment.find({}, function(err, apartments){
-  //       apartments.forEach(function(apartment){
-  //         if(apartment.tenants.length > 0){
-  //           sum += apartment.rent;
-  //         }
-  //       });
-  //     });
-  //   });
-  //   res.send(sum);
-  // });
+  app.get('/finances', function(req, res){
+    var sum = 0;
+    Property.find(req.body.pid, function(err, property){
+      Apartment.find({}, function(err, apartments){
+        apartments.forEach(function(apartment){
+          if(apartment.tenants.length > 0){
+            sum += apartment.rent;
+          }
+        });
+      });
+    });
+    res.send(sum);
+  });
 
 
 
   /*admin routes*/
 
   /*add a manager*/
+
+  app.post('toggleManager', function(req, res){
+    Account.findById(req.body.uid, function(err, user){
+      !user.isManager;
+      user.save();
+    });
+  });
+
+  // app.post('removeManager', function(req, res){
+  //   Account.findById(req.body.uid, funciton(err, user){
+  //     user.isManager = false;
+  //     user.save();
+  //   });
+  // });
 
   app.post('/addManager', function(req, res){
     Account.findById(req.body.uid, function(err, user){
