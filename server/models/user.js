@@ -5,10 +5,10 @@ var Apartment = require('./apartment');
 
 var userSchema = new Schema({
   username: {type: String, required: true},
-  isManager: {type: Boolean,  default: false},
-  isAdmin: {type: Boolean,  default: false},
   apartmentNum: {type: Mongoose.Schema.ObjectId , ref: 'Apartment'},
-  isTenant: {type: Boolean, default: false}
+  isTenant: {type: Boolean, default: false},
+  isManager: {type: Boolean,  default: false},
+  isAdmin: {type: Boolean,  default: false}
 });
 
 userSchema.plugin(passportLocalMongoose);

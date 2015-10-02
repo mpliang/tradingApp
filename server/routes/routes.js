@@ -20,15 +20,18 @@ module.exports = function (app) {
   });
 
   app.post('/register', function(req, res) {
-    Account.register(new Account({ username : req.body.username , isManager: req.body.isManager, isAdmin: req.body.isAdmin, rentDue: req.body.rentDue}), req.body.password, function(err, account) {
-        if (err) {
-          console.log(err);
-            // return res.render('register', { account : account });
-        }
+    console.log('req.body', req.body);
 
-        passport.authenticate('local')(req, res, function () {
-          res.send(req.body);
-        });
+    var password = req.body.password;
+    Account.register(new Account(req.body), password, function(err, account) {
+      if (err) {
+        console.log(err);
+          // return res.render('register', { account : account });
+      }
+
+      passport.authenticate('local')(req, res, function () {
+        res.send(req.body);
+      });
     });
   });
 
@@ -67,6 +70,11 @@ admin add managers
 admin remove managers
 
 managers add and remove apartments from and to their properties*/
+
+
+  /*tenant routes*/
+
+
 
   /*Manager routes*/
 
@@ -161,6 +169,22 @@ managers add and remove apartments from and to their properties*/
       });
     });
   });
+
+  // app.get('/finances', function(req, res){
+  //   var sum = 0;
+  //   Property.find(req.body.pid, function(err, property){
+  //     Apartment.find({}, function(err, apartments){
+  //       apartments.forEach(function(apartment){
+  //         if(apartment.tenants.length > 0){
+  //           sum += apartment.rent;
+  //         }
+  //       });
+  //     });
+  //   });
+  //   res.send(sum);
+  // });
+
+
 
   /*admin routes*/
 
