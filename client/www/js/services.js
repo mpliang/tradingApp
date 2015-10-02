@@ -4,6 +4,18 @@ angular.module('starter.services', [])
   var loggedIn = false;
 })
 
+.service('storageService', function (localStorageService) {
+    this.save = function(key, data){
+      localStorageService.set(key, data)
+    }
+    this.load = function(key){
+    return localStorageService.get(key);
+    }
+    this.removeItem = function(key){
+      return localStorageService.remove(key)
+    }
+})
+
 .service('userService', function ($http, $state) {
 
   this.login = function (data) {
