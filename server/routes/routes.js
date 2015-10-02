@@ -190,9 +190,11 @@ managers add and remove apartments from and to their properties*/
 
   /*add a manager*/
 
-  app.post('toggleManager', function(req, res){
+  app.post('/toggleManager', function(req, res){
+    console.log(req.body);
     Account.findById(req.body.uid, function(err, user){
-      !user.isManager;
+      user.isManager = !user.isManager;
+      console.log(err);
       user.save();
     });
   });

@@ -65,20 +65,33 @@
 
     </ion-list>
     <div class="list list-inset">
-      <ion-list ng-if="user.isAdmin === true">
+      <ion-list ng-if="user.isAdmin === true" can-swipe="true">
         <label class="item item-input">
           <input type="text" placeholder="Make Manager" ng-model="makeManager">
-          <button class="button button-positive" ng-click="makeManager()">Make Manager</button>
+    
 
         </label>
-
-        <a class="item item-thumbnail-left" href="#" ng-repeat="user in users" ng-click="click(makeManager)">
-          <img src="{{user.picture}}">
-          <h2>{{user.username}}</h2>
+        <ion-item class="item item-thumbnail-left" ng-if="makeManager" ng-repeat="usr in users | filter: makeManager" ng-click="click(makeManager)">
+          <img src="{{usr.picture}}">
+          <h2>{{usr.username}}</h2>
           <i class="icon fa fa-group"></i>
-        </a>
+          <span ng-if="user.isManager">
+            <label class="toggle pull-right" ng-click="toggleManager(usr)" ng-model="usr.isManager">
+              <input type="checkbox">
+              <div class="track">
+                <div class="handle"></div>
+              </div>
+            </label>
+            <span class="pull-right managerLabel">Manager </span>
+            <!--
+          <a class="pull-right" href=""><button>Make Manager</button></a>
+          <a class="pull-right" href=""><button>Revoke Status</button></a>
+-->
+            </span>
+          <ion-option-button class="button-assertive icon ion-trash-a"></ion-option-button>
+        </ion-item>
       </ion-list>
     </div>
-<button class="button button-block button-assertive" ng-click="logout()">Logout</button>
+    <button class="button button-block button-assertive" ng-click="logout()">Logout</button>
   </ion-content>
 </ion-view>

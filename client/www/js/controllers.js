@@ -26,6 +26,9 @@ angular.module('starter.controllers', [])
     $scope.chooseProp = function(name) {
         $scope.propertyName = name;
     }
+    $scope.toggleManager = function(usr){
+      userService.toggle(usr);
+    }
 
     $scope.addApartment = function() {
         $scope.properties.forEach(function(property) {
@@ -107,12 +110,16 @@ angular.module('starter.controllers', [])
 //!user.isTenant && !applied || (!user.isAdmin || !user.isManager)
 .controller('aptDetailCtrl', function($scope, aptService, userService, storageService) {
     $scope.applied = false;
+   
     $scope.user = userService.user;
-    $scope.user = storageService.load("user");
+   if ($scope.user === undefined){
+      $scope.user = storageService.load("user");
+    }
+    console.log("user", $scope.user);
     $scope.apply = function() {
         userService.apply({
             aid: aptService.current,
-            uid: userService.user._id
+            uid: $scope.user._id
         })
             .success(function(data, status) {
                 $scope.applied = true;
@@ -130,8 +137,10 @@ angular.module('starter.controllers', [])
                 findApt(userService.user.apartmentNum);
             })
     };
+
     $scope.checkButton = function() {
-        if (userService.user.isTenant || $scope.applied || userService.user.isManager) {
+      
+        if ($scope.user.isTenant || $scope.applied || $scope.user.isManager) {
             return false;
         } else {
             return true
@@ -158,6 +167,7 @@ angular.module('starter.controllers', [])
             console.log(apt._id, id);
             if (apt._id === id) {
                 $scope.info = apt;
+                console.log(apt.applicants);
             }
         })
     }

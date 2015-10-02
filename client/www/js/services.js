@@ -36,6 +36,16 @@ angular.module('starter.services', [])
    this.acceptApplicant = function (data){
      return $http.post("http://localhost:1337/addTenant", data);
    }
+   this.toggle = function(usr){
+     console.log("toggle", usr);
+      return $http.post("http://localhost:1337/toggleManager", {uid: usr._id});
+//     return $http({
+//    method: 'POST',
+//    url: "http://localhost:1337/toggleManager",
+//    data: {uid: usr._id},
+//    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+//})
+   }
 })
 
 
