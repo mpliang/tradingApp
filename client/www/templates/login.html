@@ -15,7 +15,7 @@
                 <input type="password" placeholder="Confirm Password" ng-model="data.confirmPassword">
             </label>
         </div>
-        <button class="button button-block button-positive" ng-click="login()" ng-hide="newOne ===true">Login</button>
+        <button class="button button-block button-positive" href="#/index" ng-hide="newOne === true">Login</button>
         <button class="button button-block button-positive" ng-click="newAccount()" ng-hide="newOne === true">New Account</button>
         <button class="button button-block button-royal" ng-click="createAccount()" ng-show="newOne === true" ng-disabled="checkInput() === false">Create Account</button>
     </ion-content>
